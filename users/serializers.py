@@ -8,11 +8,23 @@ from .models import CustomsUser
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
-    """Сериализатор для создания профиля"""
+    """Сериализатор для создания пользователя"""
+
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = CustomsUser
-        fields = "__all__"
+        fields = [
+            "email", "first_name", "last_name", "avatar",
+            "phone_number", "role", "password"
+        ]
+
+    def create(self, validated_data):
+        password = validated_data.pop("password")
+        user = CustomsUser(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
 
 
 class ProfileUserSerializer(serializers.ModelSerializer):

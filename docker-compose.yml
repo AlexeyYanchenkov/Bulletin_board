@@ -24,6 +24,8 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       DEBUG: "1"
       SECRET_KEY: "replace-me"
