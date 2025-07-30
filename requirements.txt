@@ -3,6 +3,9 @@ Django>=5.1
 djangorestframework>=3.16
 python-decouple>=3.8
 psycopg2-binary>=2.9
+python-dotenv>=1.0.0
+django-filter>=24.1
+Pillow>=10.0
 
 # JWT авторизация
 djangorestframework-simplejwt>=5.3.0
